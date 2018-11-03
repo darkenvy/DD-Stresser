@@ -3,10 +3,11 @@ const yargs = require("yargs");
 const Disk = require('./disks');
 
 yargs.help('help')
-  .usage(`Usage: $0 --maxSize [1mb] --maxBlocksize [128mb]
+  .usage(`Usage: $0 --maxSize [10mb] --maxBlocksize [1mb]
 
     [] signifies optional parameters.
-    defaults to 1mb for maxSize and 128mb for maxBlocksize if not specified
+    defaults to 10mb for maxSize and 1mb for maxBlocksize if not specified
+    blocksizes greater than 1mb may not be performant
   `)
   .showHelpOnFail(true);
 
@@ -66,9 +67,8 @@ function printBestResults() {
 
 
 function main() {
-  console.log(argv)
-  const maxSize = argv.maxSize || '1mb';
-  const maxBlocksize = argv.maxBlocksize || '128mb';
+  const maxSize = argv.maxSize || '10mb';
+  const maxBlocksize = argv.maxBlocksize || '1mb';
   console.log('--------------------------------------------------');
   console.log('Beginning tests with the max filesize of', maxSize);
   console.log('And a max blocksize of', maxBlocksize);
