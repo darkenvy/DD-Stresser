@@ -14,7 +14,6 @@ yargs.help('help')
 const argv = yargs.argv;
 const results = {};
 const blockSizes = [
-  '512b',
   '1k',
   '2k',
   '4k',
